@@ -54,3 +54,9 @@ steps:
                 }
                 
                 Connect-EpiCloud -ProjectId "2fbeecd0-2a42-4da4-96d6-ae5201606599" -ClientKey "EcPGr0NbNaKyJksHEgrqj5eYJzCUN0TYeZFsoeXB0RmhfZAe" -ClientSecret "XBgk+NCHPzg+vTp7pwk6hzCpgcYa0ec4N44UsrAwL5b83OnjD0Yx8ODvDqyNOp4R"
+
+                $packagePath = "$(Build.ArtifactStagingDirectory)\$(appName).cms.app.$(appVersion).nupkg"
+          
+                $saslink = Get-EpiDeploymentPackageLocation
+          
+                Add-EpiDeploymentPackage -SasUrl $saslink -Path $packagePath
