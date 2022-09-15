@@ -40,5 +40,5 @@ steps:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/PackageContent/wwwroot'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(appName).cms.app.$(appVersion).nupkg'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Alloy.cms.app.$(Build.BuildId).nupkg'
     replaceExistingArchive: true
