@@ -35,10 +35,10 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: ArchiveFiles@2
+- task: PowerShell@2
+  displayName: 'Inline Powershell'
   inputs:
-    rootFolderOrFile: '$(Agent.TempDirectory)/SitePackageContent'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/Alloy.app.$(Build.BuildId).nupkg'
-    replaceExistingArchive: true
+    TargetType: inline
+    Script: |
+     Compress-Archive -Path "$(Build.BinariesDirectory)\target\debug" -DestinationPath "$(Build.ArtifactStagingDirectory)\Alloy.cms.app.$(Build.BuildId).nupkg"
+    pwsh: true
