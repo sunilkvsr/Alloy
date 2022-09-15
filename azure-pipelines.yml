@@ -37,8 +37,8 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/PackageContent/wwwroot'
-    includeRootFolder: true
+    rootFolderOrFile: '$(Agent.TempDirectory)/SitePackageContent'
+    includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/Alloy.cms.app.$(Build.BuildId).nupkg'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Alloy.app.$(Build.BuildId).nupkg'
     replaceExistingArchive: true
