@@ -1,0 +1,5 @@
+2022-04-13 18:13:23.860 +05:30 [INF] Running create-cms-database command.
+2022-04-13 18:13:24.420 +05:30 [ERR] The database name Alloy already exists on the server, please choose another name.
+2022-04-13 18:13:55.474 +05:30 [INF] Running create-cms-database command.
+2022-04-13 18:13:56.313 +05:30 [WRN] The username sa already exists on the server, no need to create.
+2022-04-13 18:13:56.394 +05:30 [INF] create-cms-database has completed.

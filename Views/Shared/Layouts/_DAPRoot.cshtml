@@ -1,0 +1,93 @@
+﻿@using EPiServer.Security;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="~/css/drs-style.css">
+</head>
+<body>
+
+    <!-- Header section -->
+    <header class="drs-header">
+      <div class="logo-panel">
+        <h1><a href=""><img class="img-responsive" src="~/css/images/logo.svg" alt="Drees DAP" /></a></h1>
+      </div>
+      <div class="header-settings">
+            @{
+                var loggedInUserName = PrincipalInfo.CurrentPrincipal.Identity.Name;
+                if(!string.IsNullOrEmpty(loggedInUserName))
+                {
+                    <span>Welcome, @loggedInUserName</span>
+                }
+                else
+                {
+                     <span>Welcome</span>
+                }
+            }
+        <a href=""><img class="img-responsive" src="~/css/images/gear.svg" alt="Settings" /></a>
+      </div>
+    </header>
+
+   <!-- content section -->
+    <section class="drs-section">
+        
+        <!-- left Navigation -->
+        <div class="drs-left-nav">
+          <ul>
+            <li class="title"><img class="img-responsive" src="~/css/images/admin-user.svg" alt="Administration" /> Administration</li>
+            <li>
+              <a  data-bs-toggle="collapse" href="#collapsCorporation" >Corporation</a>
+              <div class="collapse" id="collapsCorporation">
+                <ul class="submenu">
+                  <li><a href="">Area Amenities</a></li>
+                  <li><a href="">Area Features</a></li>
+                  <li><a href="">Community Styles</a></li>
+                  <li><a href="">Corporate Setup</a></li>
+                </ul>
+              </div>           
+            
+            </li>
+            <li>
+              <a data-bs-toggle="collapse" href="#collapseDivision">Division</a>
+              <div class="collapse" id="collapseDivision">
+                <ul class="submenu">
+                  <li><a href="">Employee Settings</a></li>
+                  <li><a href="">NHS Builder Division Setup</a></li>
+                  <li><a href="">Drees Homes Sales Counselors</a></li>
+                  <li><a href="">Drees Homes Email Recipients</a></li>
+                  <li><a href="">Community Amenities</a></li>
+                  <li><a href="">Geographic Associations</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="title"><img class="img-responsive" src="~/css/images/marketing.svg" alt="Marketing" /> Marketing</li>
+            <li><a href="">Community Amenities Management</a</li>
+            <li><a href="">Floor Plans</a></li>
+            <li><a href="">Model Neighborhoods</a></li>
+            <li><a href="">Marketing Info - Review &amp; Approve</a></li>
+            <li><a href="">Area/Subarea</a></li>
+            <li><a href="">Community/Neighborhood</a></li>
+            <li><a href="">Design Center Management</a></li>
+            <li><a href="">Build On Lot Management</a></li>
+            <li><a href="">Sales Website Management</a></li>
+            <li><a href="">Data Feeds</a></li>
+          </ul>
+        </div>
+
+        <!-- Main content -->
+        <div class="drs-main-content">
+           @RenderBody()
+        </div>
+
+    </section>
+
+    <!-- JavaScript -->  
+    <script src="~/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="~/js/jquery-3.5.1.min.js"></script>
+</body>
+</html>

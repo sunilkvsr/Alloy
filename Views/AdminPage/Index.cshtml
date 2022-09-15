@@ -1,0 +1,118 @@
+﻿@model AdminPage
+
+@{
+    Layout = "~/Views/Shared/Layouts/_DAPRoot.cshtml";
+}
+
+<div class="row">
+    <div class="drs-maintitle-panel">
+        <input type="hidden" id="hdnBaseUrl" value="@ViewBag.BaseUrl">
+        <h2 class="drs-maintitle">Design Center Management</h2>
+        @Html.DropDownList("ddlDivision",Model.designCenterModel.Divisions,"Select Division",new { @class="form-select drs-select" })
+    </div>
+
+    <div class="drs-form-fields">
+        <div class="add-location-section">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.designCenterModel.locationModels.Count > 0)
+                    {
+                        foreach (var item in Model.designCenterModel.locationModels)
+                        {
+                            <tr>
+                                <td>@item.Address_1</td>
+                                <td>@item.City</td>
+                                <td>@item.State</td>
+                                <td>@item.ZIP</td>
+                                <td class="table-action">
+                                    <a href="#" onclick="LoadLocation(@item.Id,@item.DivisionId)"><img class="img-responsive" src="~/css/images/icon-edit.svg" alt="Edit" /></a>
+                                    <a href="#" onclick="DeleteLocation(@item.Id)"><img class="img-responsive" src="~/css/images/icon-delete.svg" alt="Delete" /></a>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5">
+                                No data to display
+                            </td>
+                        </tr>
+                    }
+
+                    <tr>
+                        <td colspan="5" class="add-location-panel">
+                            <a id="btnAddLocation" href='#' class="link-addlocation"><span>+</span> Add Location</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="divlocation">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+        $("#btnAddLocation").click(function () {
+            LoadLocation(0,0);
+        });
+
+    function LoadLocation(designCenterId, divisionId) {
+        var virtualPath=$('#hdnBaseUrl').val();
+        if(parseInt(designCenterId)>0)
+        {
+           $('#ddlDivision').val(divisionId);
+           $.ajax({
+                type: 'POST',
+                url: virtualPath+'RenderLocation?locationId='+parseInt(designCenterId)+'',
+                success: function (data) {
+                    $("#divlocation").html(data);
+                }
+            });
+        }
+        else{
+            $.ajax({
+                type: 'POST',
+                url: virtualPath+'RenderLocation?locationId=0',
+                success: function (data) {
+                    $("#divlocation").html(data);
+                }
+            });
+        }
+
+    }
+
+    function DeleteLocation(designCenterId)
+    {
+        if (confirm("Are you sure you want to delete this record ?") == true)
+        {
+            var virtualPath=$('#hdnBaseUrl').val();
+            $.ajax({
+                type: 'POST',
+                url: virtualPath+'DeleteLocation?designCenterId='+parseInt(designCenterId)+'',
+                success: function (response) {
+                    if(response.result=="Success")
+                    {
+                        location.reload();
+                    }
+                    else
+                    {
+                        alert('Some Error Occured.')
+                    }
+                }
+            });
+        }
+    }
+</script>

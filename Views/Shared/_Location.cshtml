@@ -1,0 +1,331 @@
+﻿@model LocationModel
+
+<div class="row">
+    <input type="hidden" id="hdnDesignCenterId" value="@ViewBag.DesignCenterId" />
+    <div class="contentbox">
+        <label for="" class="form-label">Headline</label>
+        <input type="text" class="form-control" id="txtHeading" aria-describedby="Enter Headline" placeholder="Enter Headline" value="@Model.Heading">
+    </div>
+
+    <div class="contentbox ">
+        <label for="Description" class="form-label">Description</label>
+        <div class="txtarea-description">
+            <textarea class="form-control " id="txtDescription" rows="3">@Model.Description</textarea>
+            <span class="description-count">0 / 2000</span>
+        </div>
+    </div>
+
+    <div class="contentbox">
+        <label for="" class="form-label">Address 1</label>
+        <input type="text" class="form-control" id="txtAddress_1" aria-describedby="Enter Address" placeholder="Enter Street Address" value="@Model.Address_1">
+    </div>
+
+    <div class="contentbox">
+        <label for="" class="form-label">Address 2</label>
+        <input type="text" class="form-control" id="txtAddress_2" aria-describedby="Enter Address" placeholder="Enter Street Address" value="@Model.Address_2">
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 w294">
+                <label for="" class="form-label">City</label>
+                <input type="text" class="form-control" id="txtCity" aria-describedby="" placeholder="Enter City" value="@Model.City">
+            </div>
+
+            <div class="col-md-2 w133">
+                <label for="" class="form-label">State</label>
+                <select class="form-select" aria-label="" id="ddlState">
+                    <option value="">Select State</option>
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AZ">AZ</option>
+                    <option value="AR">AR</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DE">DE</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="IA">IA</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="ME">ME</option>
+                    <option value="MD">MD</option>
+                    <option value="MA">MA</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MN">MS</option>
+                    <option value="MO">MO</option>
+                    <option value="MT">MT</option>
+                    <option value="NE">NE</option>
+                    <option value="NV">NV</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>
+                    <option value="NY">NY</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WV">WV</option>
+                    <option value="WI">WI</option>
+                    <option value="WY">WY</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 w294">
+                <label for="" class="form-label">ZIP</label>
+                <input type="number" class="form-control" id="txtZIP" aria-describedby="" placeholder="Enter ZIP" value="@Model.ZIP">
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 w294">
+                <label for="" class="form-label">Phone Number</label>
+                <input type="number" class="form-control" id="txtPhoneNumber" aria-describedby="" placeholder="Enter Phone Number" value="@Model.PhoneNumber">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 w294">
+                <label for="" class="form-label">Location</label>
+                <input type="number" class="form-control" id="txtLocation" aria-describedby="" disabled placeholder="Coordinates" value="@Model.Location">
+            </div>
+
+            <div class="col-md-4 w294">
+                <label for="" class="form-label">Longitude</label>
+                <input type="number" class="form-control" id="txtLongitude" aria-describedby="" placeholder="Enter Longitude" value="@Model.Longitude">
+            </div>
+
+            <div class="col-md-4 w294">
+                <label for="" class="form-label">Latitude</label>
+                <input type="number" class="form-control" id="txtLatitude" aria-describedby="" placeholder="Enter Latitude" value="@Model.Latitude">
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="contentbox">
+        <label for="" class="form-label">Direction 1 Label</label>
+        <input type="text" class="form-control" id="txtDirection_1_Label" aria-describedby="Enter Headline" placeholder="Enter Direction 1 Label" value="@Model.Direction_1_Label">
+    </div>
+
+    <div class="contentbox">
+        <label for="Description" class="form-label">Direction 1 Detail</label>
+        <textarea class="form-control" id="txtDirection_1_Detail" rows="3">@Model.Direction_1_Detail</textarea>
+    </div>
+
+    <div class="contentbox">
+        <label for="" class="form-label">Direction 2 Label</label>
+        <input type="text" class="form-control" id="txtDirection_2_Label" aria-describedby="Enter Headline" placeholder="Enter Direction 2 Label" value="@Model.Direction_2_Label">
+    </div>
+
+    <div class="contentbox">
+        <label for="Description" class="form-label">Direction 2 Detail</label>
+        <textarea class="form-control" id="txtDirection_2_Detail" rows="3">@Model.Direction_2_Detail</textarea>
+    </div>
+
+    <div class="contentbox">
+        <label for="" class="form-label">Direction 3 Label</label>
+        <input type="text" class="form-control" id="txtDirection_3_Label" aria-describedby="Enter Headline" placeholder="Enter Direction 3 Label" value="@Model.Direction_3_Label">
+    </div>
+
+    <div class="contentbox">
+        <label for="Description" class="form-label">Direction 3 Detail</label>
+        <textarea class="form-control" id="txtDirection_3_Detail" rows="3">@Model.Direction_3_Detail</textarea>
+    </div>
+
+
+    <div class="contentbox">
+        <label for="" class="form-label">Hours 1 Label</label>
+        <input type="text" class="form-control" id="txtHours_1_Label" aria-describedby="Enter Headline" placeholder="Enter Hours 1 Label" value="@Model.Hours_1_Label">
+    </div>
+
+    <div class="contentbox">
+        <label for="Description" class="form-label">Hours 1 Detail</label>
+        <textarea class="form-control" id="txtHours_1_Detail" rows="3">@Model.Hours_1_Detail</textarea>
+    </div>
+
+    <div class="contentbox">
+        <label for="" class="form-label">Hours 2 Label</label>
+        <input type="text" class="form-control" id="txtHours_2_Label" aria-describedby="Enter Headline" placeholder="Enter Hours 2 Label" value="@Model.Hours_2_Label">
+    </div>
+
+    <div class="contentbox">
+        <label for="Description" class="form-label">Hours 2 Detail</label>
+        <textarea class="form-control" id="txtHours_2_Detail" rows="3">@Model.Hours_2_Detail</textarea>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+
+                <div class="row">
+                    <label for="" class="col-sm-2 col-form-label">Image</label>
+                    <div class="col-sm-8">
+                        <input accept="image/*" class="form-control" type="file" id="formFile">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-sm-2 col-form-label">Active</label>
+                    <div class="col-sm-8">
+                        <div class="form-check drs-form-check">
+                            <input class="form-check-input" type="checkbox" checked="@Model.Active" id="chkActive">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-7">
+                <div class="drs-imagepreview-panel">
+                    @if (!string.IsNullOrEmpty(ViewBag.ImageData))
+                    {
+                        <img id="imgpreview" class="img-responsive" src="@ViewBag.ImageData" alt="Image Preview" />
+                    }
+                    else
+                    {
+
+                        <img id="imgpreview" class="img-responsive" src="~/css/images/image-preview.svg" alt="Image Preview" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="drs-dap-action-panel">
+        <button type="button" id="btnSave" class="btn btn-dark">Save</button>
+        <button type="button" id="btnCancel" class="btn btn-light btn-cancel">Cancel</button>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+              $("#btnSave").click(function () {
+
+                  var division=$('#ContentArea_ddlDivision').val();
+                  if(division=="")
+                  {
+                      alert('Please select area');
+                      //ShowModelPopup('Alert', 'Please select area');
+                      $('#ContentArea_ddlDivision').focus()
+                      return false;
+                  }
+
+                  var virtualPath = $('#hdnBaseUrl').val();
+
+                 //save other control value
+                 var locationModel = new Object();
+                 locationModel.Id= $('#hdnDesignCenterId').val();
+                 locationModel.DivisionId = $('#ContentArea_ddlDivision').val();
+                 locationModel.Heading = $('#txtHeading').val();
+                 locationModel.Description = $('#txtDescription').val();
+                 locationModel.Address_1 = $('#txtAddress_1').val();
+                 locationModel.Address_2 = $('#txtAddress_2').val();
+                 locationModel.City = $('#txtCity').val();
+                 locationModel.State = $('#ddlState').val();
+                 locationModel.ZIP = $('#txtZIP').val();
+                 locationModel.PhoneNumber = $('#txtPhoneNumber').val();
+                 locationModel.Location = $('#txtLocation').val();
+                 locationModel.Longitude = $('#txtLongitude').val();
+                 locationModel.Latitude = $('#txtLatitude').val();
+                 locationModel.Direction_1_Label = $('#txtDirection_1_Label').val();
+                 locationModel.Direction_1_Detail = $('#txtDirection_1_Detail').val();
+                 locationModel.Direction_2_Label = $('#txtDirection_2_Label').val();
+                 locationModel.Direction_2_Detail = $('#txtDirection_2_Detail').val();
+                 locationModel.Direction_3_Label = $('#txtDirection_3_Label').val();
+                 locationModel.Direction_3_Detail = $('#txtDirection_3_Detail').val();
+                 locationModel.Hours_1_Label = $('#txtHours_1_Label').val();
+                 locationModel.Hours_1_Detail = $('#txtHours_1_Detail').val();
+                 locationModel.Hours_2_Label = $('#txtHours_2_Label').val();
+                 locationModel.Hours_2_Detail = $('#txtHours_2_Detail').val();
+                 locationModel.Active = $('#chkActive').prop('checked');
+
+                 $.ajax({
+                     type: 'POST',
+                     url: virtualPath+'SaveLocation',
+                     data: JSON.stringify(locationModel),
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     success: function (response) {
+                         if(response.result=="Success")
+                         {
+                             SaveImage();
+                         }
+                         else
+                         {
+                             alert('Some Error Occured.')
+                         }
+                     },
+                     error: function (er) {
+                         alert('Some Error Occured.')
+                     }
+                 });
+                 //-----end----------
+             });
+
+             $("#btnCancel").click(function () {
+                  location.reload();
+             });
+
+        formFile.onchange = evt => {
+           const [file] = formFile.files
+           if (file) {
+             imgpreview.src = URL.createObjectURL(file)
+           }
+         }
+
+         $("document").ready(function () {
+            $('#ddlState').val('@Model.State');
+         });
+
+    function SaveImage() {
+
+        var virtualPath = $('#hdnBaseUrl').val();
+        var formData = new FormData();
+        var files = $("#formFile").get(0).files;
+        if (files.length > 0) {
+            formData.append("file", files[0]);
+
+            $.ajax({
+                url: virtualPath + 'StoreImage',
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: formData,
+                success: function (response) {
+                    alert('Data Save Successfully.')
+                    location.reload();
+                },
+                error: function (er) {
+                    alert('Some Error Occured.')
+                }
+
+            });
+        }
+    }
+</script>

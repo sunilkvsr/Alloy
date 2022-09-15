@@ -1,0 +1,48 @@
+﻿@model DesignCenterPage
+@{
+    Layout = "~/Views/Shared/Layouts/_DAPRoot.cshtml";
+}
+
+<div class="row">
+    <input type="hidden" id="hdnBaseUrl" value="@ViewBag.BaseUrl">
+    @Html.PropertyFor(x => x.ContentArea)
+</div>
+
+@*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#drs-Modal">
+        Launch modal
+    </button>*@
+
+<!-- Modal -->
+<div class="modal fade" id="drs-Modal" tabindex="-1" aria-labelledby="drs-ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="drs-ModalTittle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="drs-ModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOk" class="btn btn-secondary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function ShowModelPopup(tittle, body) {
+        $('#drs-ModalTittle').html(tittle);
+        $('#drs-ModalBody').html(body);
+        $('#drs-Modal').modal('show');
+    }
+
+    function HidModelPopup() {
+        $('#drs-ModalTittle').html('');
+        $('#drs-ModalBody').html('')
+        $('#drs-Modal').modal('hide');
+    }
+
+    $("#btnOk").click(function () {
+        HidModelPopup();
+    });
+</script>
