@@ -60,3 +60,5 @@ steps:
                 $saslink = Get-EpiDeploymentPackageLocation
           
                 Add-EpiDeploymentPackage -SasUrl $saslink -Path $packagePath
+
+                Start-EpiDeployment -DeploymentPackage "Drees.cms.app.8.1.9.nupkg" -TargetEnvironment "Integration" -DirectDeploy -Wait
