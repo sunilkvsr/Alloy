@@ -16,7 +16,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - dotnet build Alloy.csproj
+      - dotnet build -c Release Alloy.csproj
       
   post_build:
     commands:
