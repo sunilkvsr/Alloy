@@ -17,10 +17,10 @@ phases:
     commands:
       - echo Build started on `date`
       - dotnet build -c Release Alloy.csproj
-      - dotnet publish --no-restore --output outputDirectory
+      - dotnet publish -c release Alloy.csproj -o ./publish_output
       
   post_build:
     commands:
       - echo "Compressing the package.."
-      - cd ../outputDirectory
+      - cd ./publish_output
       - zip -r Alloy.nupkg
