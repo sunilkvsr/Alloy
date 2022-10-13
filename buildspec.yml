@@ -18,6 +18,7 @@ phases:
       - echo Build started on `date`
       - dotnet build -c Release Alloy.csproj
       - dotnet publish -c release Alloy.csproj -o ./publish_output
+      - dotnet pack Alloy.csproj --output ./publish_output
       
   post_build:
     commands:
