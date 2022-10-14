@@ -20,8 +20,6 @@ phases:
       - dotnet publish -c release Alloy.csproj -o ./publish_output
       - dotnet pack Alloy.csproj --output ./publish_output
       
-  post_build:
-    commands:
-      - echo "Compressing the package.."
-      - cd ./publish_output
-      - zip -r Alloy.nupkg
+artifacts:
+  files:
+    - ./publish_output/**/* 
