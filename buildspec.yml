@@ -15,6 +15,7 @@ phases:
       - apt-get install -y powershell
       - pwsh
       - pwsh -Command 'Install-Module -Name AWSPowerShell.NetCore -Confirm:$False -Force'
+      - pwsh -Command 'Install-Module -Name EpiCloud -Confirm:$False -Force'
       #dotnet: latest - Latest resolve to 3.1, check this issue https://github.com/aws/aws-codebuild-docker-images/issues/414
    
   pre_build:
