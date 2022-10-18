@@ -18,7 +18,8 @@ phases:
       - echo Build started on `date`
       - dotnet build -c Release Alloy.csproj
       - dotnet publish -c release Alloy.csproj -o ./publish_output
-      - echo pwd
+      - echo `pwd`
+      - echo pwd      
       - zip -r Alloy.nupkg
       
 artifacts:
