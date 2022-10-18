@@ -29,9 +29,9 @@ phases:
       - dotnet build -c Release Alloy.csproj
       - dotnet publish -c release Alloy.csproj -o ./publish_output
       - echo `pwd`          
-      - zip -r ./publish_output/kiosk.nupkg ./publish_output
+      - zip -r ./Package/kiosk.nupkg ./publish_output
       - echo `ls ./publish_output`
-      - pwsh -command 'Connect-EpiCloud -ProjectId "2fbeecd0-2a42-4da4-96d6-ae5201606599" -ClientKey "EcPGr0NbNaKyJksHEgrqj5eYJzCUN0TYeZFsoeXB0RmhfZAe" -ClientSecret "XBgk+NCHPzg+vTp7pwk6hzCpgcYa0ec4N44UsrAwL5b83OnjD0Yx8ODvDqyNOp4R"; $sasUrl = Get-EpiDeploymentPackageLocation; Add-EpiDeploymentPackage -SasUrl $sasUrl -Path ./publish_output/kiosk.nupkg'
+      - pwsh -command 'Connect-EpiCloud -ProjectId "2fbeecd0-2a42-4da4-96d6-ae5201606599" -ClientKey "EcPGr0NbNaKyJksHEgrqj5eYJzCUN0TYeZFsoeXB0RmhfZAe" -ClientSecret "XBgk+NCHPzg+vTp7pwk6hzCpgcYa0ec4N44UsrAwL5b83OnjD0Yx8ODvDqyNOp4R"; $sasUrl = Get-EpiDeploymentPackageLocation; Add-EpiDeploymentPackage -SasUrl $sasUrl -Path ./Package/kiosk.nupkg'
       
 artifacts:
   files:
