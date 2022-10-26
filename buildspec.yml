@@ -34,7 +34,7 @@ phases:
       - pwsh -command '$pathToJson = "./publish_output/appsettings.json";  $a = Get-Content $pathToJson | ConvertFrom-Json; $a.AllowedHosts="**"; $a | ConvertTo-Json | set-content $pathToJson'
       - zip -r ./kiosk.nupkg ./publish_output
       - echo `ls ./publish_output`
-      - pwsh -command 'Connect-EpiCloud -ProjectId $Epi_PID -ClientKey "EcPGr0NbNaKyJksHEgrqj5eYJzCUN0TYeZFsoeXB0RmhfZAe" -ClientSecret "XBgk+NCHPzg+vTp7pwk6hzCpgcYa0ec4N44UsrAwL5b83OnjD0Yx8ODvDqyNOp4R"; $sasUrl = Get-EpiDeploymentPackageLocation; Add-EpiDeploymentPackage -SasUrl $sasUrl -Path ./kiosk.nupkg'
+      - pwsh -command 'Connect-EpiCloud -ProjectId "$Epi_PID" -ClientKey "EcPGr0NbNaKyJksHEgrqj5eYJzCUN0TYeZFsoeXB0RmhfZAe" -ClientSecret "XBgk+NCHPzg+vTp7pwk6hzCpgcYa0ec4N44UsrAwL5b83OnjD0Yx8ODvDqyNOp4R"; $sasUrl = Get-EpiDeploymentPackageLocation; Add-EpiDeploymentPackage -SasUrl $sasUrl -Path ./kiosk.nupkg'
       
 artifacts:
   files:
