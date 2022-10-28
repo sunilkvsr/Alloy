@@ -3,7 +3,8 @@
 version: 0.2
 env:
   variables:
-    Epi_PID: "PID"    
+    Epi_PID: "PID"
+    Build_Version: $CODEBUILD_BUILD_NUMBER    
 phases:
   install:
     runtime-versions:
@@ -32,9 +33,9 @@ phases:
       - dotnet publish -c release Alloy.csproj -o ./publish_output
       - echo `pwd`
       - pwsh -command '$pathToJson = "./publish_output/appsettings.json";  $a = Get-Content $pathToJson | ConvertFrom-Json; $a.AllowedHosts="**"; $a | ConvertTo-Json | set-content $pathToJson'
-      - zip -r ./kiosk-$CODEBUILD_BUILD_NUMBER.nupkg ./publish_output
+      - zip -r ./kiosk-$Build_Version.nupkg ./publish_output
       - echo `ls ./publish_output`
-      - pwsh -command 'Connect-EpiCloud -ProjectId $Env:Epi_PID -ClientKey "EcPGr0NbNaKyJksHEgrqj5eYJzCUN0TYeZFsoeXB0RmhfZAe" -ClientSecret "XBgk+NCHPzg+vTp7pwk6hzCpgcYa0ec4N44UsrAwL5b83OnjD0Yx8ODvDqyNOp4R"; $sasUrl = Get-EpiDeploymentPackageLocation; Add-EpiDeploymentPackage -SasUrl $sasUrl -Path ./kiosk-$CODEBUILD_BUILD_NUMBER.nupkg'
+      - pwsh -command 'Connect-EpiCloud -ProjectId $Env:Epi_PID -ClientKey "EcPGr0NbNaKyJksHEgrqj5eYJzCUN0TYeZFsoeXB0RmhfZAe" -ClientSecret "XBgk+NCHPzg+vTp7pwk6hzCpgcYa0ec4N44UsrAwL5b83OnjD0Yx8ODvDqyNOp4R"; $sasUrl = Get-EpiDeploymentPackageLocation; Add-EpiDeploymentPackage -SasUrl $sasUrl -Path ./kiosk-$Env:Build_Version.nupkg'
       
 artifacts:
   files:
