@@ -10,7 +10,7 @@ env:
     AwsSecretAccessKey: "xyz"
     BucketName: "Bname"
     FileName: "Fname"    
-    Build_Version: "Kiosk-$CODEBUILD_BUILD_NUMBER.nupkg"    
+    Build_Version: "Kiosk-${CODEBUILD_BUILD_NUMBER}.nupkg"    
 phases:
   install:
     runtime-versions:
