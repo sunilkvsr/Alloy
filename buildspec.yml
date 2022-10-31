@@ -10,13 +10,13 @@ env:
     AwsSecretAccessKey: "xyz"
     BucketName: "Bname"
     FileName: "Fname"    
-    Build_Version: $CODEBUILD_BUILD_NUMBER    
+    Build_Version: "Kiosk-$CODEBUILD_BUILD_NUMBER.nupkg"    
 phases:
   install:
     runtime-versions:
       dotnet: 5.0
     commands:
-      - echo Install started on $CODEBUILD_BUILD_NUMBER  $Epi_PID `date`
+      - echo Install started on $CODEBUILD_BUILD_NUMBER  $Epi_PID $Build_Version`date`
       - wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
       - dpkg -i packages-microsoft-prod.deb
       - apt-get update
@@ -41,6 +41,7 @@ phases:
       - pwsh -command '$pathToJson = "./publish_output/appsettings.json";  $a = Get-Content $pathToJson | ConvertFrom-Json; $a.DreesSettings.AwsAccessKey=$Env:AwsAccessKey; $a.DreesSettings.AwsSecretAccessKey=$Env:AwsSecretAccessKey; $a | ConvertTo-Json | set-content $pathToJson'
       - zip -r ./kiosk-$Build_Version.nupkg ./publish_output
       - echo `ls ./publish_output`
+      - pwsh -command 'Connect-EpiCloud -ProjectId $Env:Epi_PID -ClientKey $Env:Epi_CKey -ClientSecret $Env:Epi_Sec; $sasUrl = Get-EpiDeploymentPackageLocation; Add-EpiDeploymentPackage -SasUrl $sasUrl -Path ./$Env:Build_Version; Start-EpiDeployment -DeploymentPackage $Env:Build_Version -TargetEnvironment "Integration" -DirectDeploy -Wait'
       
 artifacts:
   files:
