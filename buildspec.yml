@@ -39,7 +39,7 @@ phases:
       - dotnet publish -c release Alloy.csproj -o ./publish_output
       - echo `pwd`
       - pwsh -command '$pathToJson = "./publish_output/appsettings.json";  $a = Get-Content $pathToJson | ConvertFrom-Json; $a.DreesSettings.AwsAccessKey=$Env:AwsAccessKey; $a.DreesSettings.AwsSecretAccessKey=$Env:AwsSecretAccessKey; $a | ConvertTo-Json | set-content $pathToJson'
-      - zip -r ./kiosk-${CODEBUILD_BUILD_NUMBER}.nupkg ./publish_output
+      - zip -r ./$Env:Build_Version ./publish_output
       - echo `ls ./publish_output`
       - pwsh -command 'Connect-EpiCloud -ProjectId $Env:Epi_PID -ClientKey $Env:Epi_CKey -ClientSecret $Env:Epi_Sec; $sasUrl = Get-EpiDeploymentPackageLocation; Add-EpiDeploymentPackage -SasUrl $sasUrl -Path ./$Env:Build_Version; Start-EpiDeployment -DeploymentPackage $Env:Build_Version -TargetEnvironment "Integration" -DirectDeploy -Wait'
       
