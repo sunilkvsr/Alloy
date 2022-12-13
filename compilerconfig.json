@@ -1,5 +1,5 @@
 [
-  {
+  { 
     "inputFile": "Assets/scss/style.scss",
     "outputFile": "wwwroot/css/style.css"
   },
